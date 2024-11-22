@@ -24,7 +24,7 @@ jobs:
   
       - name: Build Docker Image
         run: |
-          docker build -t hjain2003/rapidfortserver:latest .
+          docker build -f server/Dockerfile -t hjain2003/rapidfortserver:latest .
   
       - name: Push Docker Image
         run: |
