@@ -1,6 +1,10 @@
 {
+  "scripts":{
+    "start": "node app.js"
+  },
   "type": "module",
   "dependencies": {
+    "phantomjs-prebuilt": "^2.1.16",
     "cors": "^2.8.5",
     "docx-pdf": "^0.0.1",
     "express": "^4.21.1",

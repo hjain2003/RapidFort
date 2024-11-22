@@ -71,6 +71,10 @@ if (!fs.existsSync('converted')) {
     fs.mkdirSync('converted');
 }
 
+app.get('/', (req, res) => {
+    res.send(`Rapid Fort Server app`);
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
