@@ -1,0 +1,15 @@
+nav{
+    width: 100%;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* padding: 10px; */
+    padding-bottom: 10px;
+    padding-top: 10px;
+    height: 60px;
+    background-color: rgb(229,50,45);
+    color: white;
+}
+nav h1{
+    margin-left: 30px;
+}
