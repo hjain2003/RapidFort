@@ -4,10 +4,8 @@ import docxConverter from 'docx-pdf';
 import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
-
 import { fileURLToPath } from 'url';
 
-// Derive __dirname for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -19,15 +17,23 @@ app.use(express.json());
 
 const upload = multer({ dest: 'uploads/' });
 
-// Endpoint to handle upload and conversion
 app.post('/convert', upload.single('file'), (req, res) => {
     const file = req.file;
+   
+    if (!file) {
+        return res.status(400).json({ error: 'No file uploaded.' });
+    }
+
+    if (file.mimetype !== 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+        return res.status(400).json({ error: 'Invalid file type. Only .docx files are allowed.' });
+    }
+
     const outputFilePath = `converted/${file.filename}.pdf`;
 
     docxConverter(file.path, outputFilePath, (err) => {
         if (err) {
             console.error(err);
-            res.status(500).json({ error: 'Error converting file.' });
+            return res.status(500).json({ error: 'Error converting file.' });
         } else {
             const downloadUrl = `http://localhost:${PORT}/download/${file.filename}`;
             res.json({
@@ -47,6 +53,10 @@ app.post('/convert', upload.single('file'), (req, res) => {
 app.get('/download/:filename', (req, res) => {
     const filename = req.params.filename;
     const filePath = path.join(__dirname, 'converted', `${filename}.pdf`);
+
+    if (!fs.existsSync(filePath)) {
+        return res.status(404).json({ error: 'File not found.' });
+    }
 
     res.download(filePath, 'converted.pdf', (err) => {
         if (err) {
