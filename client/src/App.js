@@ -20,8 +20,7 @@ const App = () => {
             setMessage('Please upload a file.');
             return;
         }
-
-        // Check for file type before proceeding
+      
         if (file.type !== 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
             setMessage('Invalid file type. Please upload a .docx file.');
             return;
@@ -34,20 +33,16 @@ const App = () => {
 
         try {
             const response = await axios.post('http://localhost:5000/convert', formData);
-
-            // Extract metadata and download link from response
+    
             setMetadata(response.data.metadata);
             setDownloadLink(response.data.downloadLink);
             setMessage('File converted successfully!');
         } catch (error) {
             if (error.response) {
-                // Server responded with a status other than 2xx
                 setMessage(`Error: ${error.response.data.error || 'Error converting file.'}`);
             } else if (error.request) {
-                // Request was made but no response was received
                 setMessage('Server not responding. Please try again later.');
             } else {
-                // Something else went wrong
                 setMessage('An unexpected error occurred. Please try again.');
             }
         } finally {
