@@ -5,7 +5,7 @@ FROM node:16-bullseye
 WORKDIR /app
 
 # Copy package.json and package-lock.json to install dependencies first
-COPY package*.json ./
+COPY server/package*.json ./
 
 # Install necessary dependencies, including OpenSSL and PhantomJS requirements
 RUN apt-get update && apt-get install -y --no-install-recommends \
