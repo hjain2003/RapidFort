@@ -32,7 +32,9 @@ form button{
   cursor: pointer;
   width: 180px;
 }
-
+form button:hover{
+  background-color: red;
+}
 form input{
   border: none;
   border-radius: 20px;
