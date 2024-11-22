@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN npm install
 
 # Copy the rest of the application code
-COPY . .
+COPY server/ .
 
 # Set environment variable to disable OpenSSL auto-configuration
 ENV OPENSSL_CONF=/dev/null
