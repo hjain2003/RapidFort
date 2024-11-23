@@ -35,7 +35,7 @@ app.post('/convert', upload.single('file'), (req, res) => {
             console.error(err);
             return res.status(500).json({ error: 'Error converting file.' });
         } else {
-            const downloadUrl = `http://localhost:${PORT}/download/${file.filename}`;
+            const downloadUrl = `http://127.0.0.1:58964/download/${file.filename}`;
             res.json({
                 message: 'File converted successfully!',
                 metadata: {
@@ -72,9 +72,9 @@ if (!fs.existsSync('converted')) {
 }
 
 app.get('/', (req, res) => {
-    res.send(`Rapid Fort Server app`);
+    res.send(`Rapid Fort Server app change check`);
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://127.0.0.1:58964`);
 });
