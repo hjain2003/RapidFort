@@ -1,13 +1,15 @@
 {
-  "scripts":{
+  "scripts": {
     "start": "node app.js"
   },
   "type": "module",
   "dependencies": {
-    "phantomjs-prebuilt": "^2.1.16",
     "cors": "^2.8.5",
     "docx-pdf": "^0.0.1",
     "express": "^4.21.1",
-    "multer": "^1.4.5-lts.1"
+    "hummus": "^1.0.117",
+    "multer": "^1.4.5-lts.1",
+    "pdf-lib": "^1.17.1",
+    "phantomjs-prebuilt": "^2.1.16"
   }
 }
