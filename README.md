@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+# RapidFort DocToWord Converter
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A powerful and efficient tool to convert Word documents to PDF format with ease!
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+- [Screenshots](#screenshots)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Project](#running-the-project)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **File Conversion:** Utilizes the *docx-pdf* library for converting Word documents to PDFs.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Dockerized Server:** The project server is fully containerized using Docker to ensure portability and scalability. Docker image available [here](https://hub.docker.com/r/hjain2003/rapidfortserver)
 
-### `npm test`
+- **CI/CD Integration:** GitHub Actions is configured to automatically build and push the latest Docker image to Docker Hub after every code change.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **User-Friendly Bash Script:** A bash script is provided to allow users to pull and run the latest Docker image with a single mouse click or command.
 
-### `npm run build`
+- **Kubernetes Deployment:** Deployment and service manifest files are created to deploy and test the application locally using Kubernetes and Minikube
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Screenshots
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Landing Page
+![Application Interface](assets/screenshots/choosefile.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Output with file metadata and download link
+![Application Interface](assets/screenshots/output.png)
 
-### `npm run eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Frontend
+- ReactJS - Javascript framework
+- Tailwind CSS - Utility-first CSS framework
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend
+- Node.js - Runtime environment
+- Express.js - Web application framework
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Testing & Development
+- Axios - HTTP client for API requests
+- Postman - API testing and documentation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Other Backend Libraries
+- phantomjs-prebuilt - Headless browser for PDF generation
+- cors - Cross-Origin Resource Sharing middleware
+- docx-pdf - Document conversion utility
+- multer - File upload handling
 
-## Learn More
+## Getting Started
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Follow these instructions to get the project running on your local machine.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Prerequisites
 
-### Code Splitting
+Ensure you have the following installed:
+- Node.js (Latest LTS version)
+- npm (Comes with Node.js)
+- Git
+- Docker (For containerized deployment)
+- Kubernetes
+- Minikube (For local Kubernetes development)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Installation
 
-### Analyzing the Bundle Size
+1. Clone the Repository
+   ```bash
+   git clone https://github.com/hjain2003/RapidFort.git
+   cd RapidFort
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Set Up Backend
+   ```bash
+   cd server
+   npm install
+   ```
 
-### Making a Progressive Web App
+3. Set Up Frontend
+   ```bash
+   cd client
+   npm install
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Running the Project
 
-### Advanced Configuration
+Choose one of the following methods to run the server:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### 1. [METHOD 1]: Docker Deployment
 
-### Deployment
+- For Linux/macOS:
+  ```bash
+  ./run_container.sh
+  ```
+- For Windows:
+  ```bash
+  run_container.bat
+  ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### 2. [METHOD 2]: Kubernetes Deployment on Local Machine
+- Start minikube:
+    ```bash
+    minkube start
+    ```
+- Apply the configuration files:
+    ```bash
+    cd k8s
+    kubectl apply -f deployment.yaml
+    kubectl apply -f service.yaml
+    ```
+- Check deployment, pods and services:
+    ```bash
+    kubectl get deployment
+    kubectl get pods
+    kubectl get services
+    ```
+- Use Minikube tunnel:
+    ```bash
+    minikube tunnel
+    ```
+- The server will be hosted on <your_minikube_ip>:5000. To find your minikube ip addr:
+    ```bash
+    minikube ip
+    ```
 
-### `npm run build` fails to minify
+The client application will be available at [http://localhost:3000](http://localhost:3000) which you can access via "npm start" in client folder
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
