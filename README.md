@@ -18,13 +18,16 @@ RapidFort DocToWord Converter is a web application that provides a seamless inte
 
 ## Screenshots
 
-![Application Interface](path/to/screenshot.png)
+
+![Application Interface](assets/screenshots/choosefile.png)
+
+![Application Interface](assets/screenshots/output.png)
 Description of the screenshot
 
 ## Technologies Used
 
 ### Frontend
-- ReactJS - User interface framework
+- ReactJS - Javascript framework
 - Tailwind CSS - Utility-first CSS framework
 
 ### Backend
@@ -35,7 +38,7 @@ Description of the screenshot
 - Axios - HTTP client for API requests
 - Postman - API testing and documentation
 
-### Additional Libraries
+### Other Backend Libraries
 - phantomjs-prebuilt - Headless browser for PDF generation
 - cors - Cross-Origin Resource Sharing middleware
 - docx-pdf - Document conversion utility
@@ -77,9 +80,9 @@ Ensure you have the following installed:
 
 ### Running the Project
 
-Choose one of the following methods to run the project:
+Choose one of the following methods to run the server:
 
-#### 1. Docker Deployment
+#### 1. [METHOD 1]: Docker Deployment
 
 - For Linux/macOS:
   ```bash
@@ -89,30 +92,32 @@ Choose one of the following methods to run the project:
   ```bash
   run_container.bat
   ```
-- Then simply run:
-  ```bash
-  cd client
-  npm start
-  
 
-#### 2. Kubernetes Deployment on Local Machine
-```bash
-cd k8s
+#### 2. [METHOD 2]: Kubernetes Deployment on Local Machine
+- Start minikube:
+    ```bash
+    minkube start
+    ```
+- Apply the configuration files:
+    ```bash
+    cd k8s
+    kubectl apply -f deployment.yaml
+    kubectl apply -f service.yaml
+    ```
+- Check deployment, pods and services:
+    ```bash
+    kubectl get deployment
+    kubectl get pods
+    kubectl get services
+    ```
+- Use Minikube tunnel:
+    ```bash
+    minikube tunnel
+    ```
+- The server will be hosted on <your_minikube_ip>:5000. To find your minikube ip addr:
+    ```bash
+    minikube ip
+    ```
 
-```
+The client application will be available at [http://localhost:3000](http://localhost:3000) which you can access via "npm start" in client folder
 
-#### 3. Traditional npm Development Server
-```bash
-cd client
-npm start
-```
-
-The application will be available at [http://localhost:3000](http://localhost:3000)
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
