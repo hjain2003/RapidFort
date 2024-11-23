@@ -3,11 +3,11 @@ kind: Service
 metadata:
   name: web-server-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: web-server
   ports:
     - protocol: TCP
       port: 5000        # This is the target port your container listens on.
       targetPort: 5000  # Container port.
-      nodePort: 30000   # Fixed port exposed on your local machine.
+

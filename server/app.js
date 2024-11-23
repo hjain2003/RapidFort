@@ -35,7 +35,7 @@ app.post('/convert', upload.single('file'), (req, res) => {
             console.error(err);
             return res.status(500).json({ error: 'Error converting file.' });
         } else {
-            const downloadUrl = `http://127.0.0.1:30000/download/${file.filename}`;
+            const downloadUrl = `http://127.0.0.1:5000/download/${file.filename}`;
             res.json({
                 message: 'File converted successfully!',
                 metadata: {
@@ -76,5 +76,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://127.0.0.1:30000`);
+    console.log(`Server running on http://127.0.0.1:5000/`);
 });
