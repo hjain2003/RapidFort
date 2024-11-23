@@ -18,11 +18,11 @@ RapidFort DocToWord Converter is a web application that provides a seamless inte
 
 ## Screenshots
 
-
+Landing Page
 ![Application Interface](assets/screenshots/choosefile.png)
 
+Output with file metadata and download link
 ![Application Interface](assets/screenshots/output.png)
-Description of the screenshot
 
 ## Technologies Used
 
