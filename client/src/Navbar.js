@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <>
     <nav>
-        <h1>RapidFort DocToWord Converter</h1>
+        <h1>RapidFort WordToDoc Converter</h1>
     </nav>
 
     </>
