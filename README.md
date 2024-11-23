@@ -14,7 +14,15 @@ A powerful and efficient tool to convert Word documents to PDF format with ease!
 
 ## Overview
 
-RapidFort DocToWord Converter is a web application that provides a seamless interface for converting Microsoft Word documents to PDF format. Built with modern technologies and designed for simplicity and efficiency.
+- **File Conversion:** Utilizes the *docx-pdf* library for converting Word documents to PDFs.
+
+- **Dockerized Server:** The project server is fully containerized using Docker to ensure portability and scalability. Docker image available [here](https://hub.docker.com/r/hjain2003/rapidfortserver)
+
+- **CI/CD Integration:** GitHub Actions is configured to automatically build and push the latest Docker image to Docker Hub after every code change.
+
+- **User-Friendly Bash Script:** A bash script is provided to allow users to pull and run the latest Docker image with a single mouse click or command.
+
+- **Kubernetes Deployment:** Deployment and service manifest files are created to deploy and test the application locally using Kubernetes and Minikube
 
 ## Screenshots
 
